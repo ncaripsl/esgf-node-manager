@@ -420,6 +420,7 @@ public class AccessLoggingFilter implements Filter {
             byteCountListener.setStartTime(System.currentTimeMillis());
             AccessLoggingResponseWrapper accessLoggingResponseWrapper = new AccessLoggingResponseWrapper((HttpServletResponse)response, byteCountListener);
             chain.doFilter(request, accessLoggingResponseWrapper);
+	    accessLoggingResponseWrapper.stream.close();
         }catch(Throwable t) {
             log.error(t);
             HttpServletResponse resp = (HttpServletResponse)response;
