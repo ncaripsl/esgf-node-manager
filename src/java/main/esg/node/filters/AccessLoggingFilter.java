@@ -423,7 +423,6 @@ public class AccessLoggingFilter implements Filter {
         }catch(Throwable t) {
             log.error(t);
             HttpServletResponse resp = (HttpServletResponse)response;
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Caught unforseen Exception in ESG Access Logging Filter (url may not be resolvable to an exisiting file) "+t.getMessage());
         }
     }
     
